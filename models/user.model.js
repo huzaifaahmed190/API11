@@ -1,6 +1,7 @@
 const mongoose =  require('mongoose');
 
 
+
 const user = mongoose.model(
     "User",
     mongoose.Schema({
@@ -13,7 +14,7 @@ const user = mongoose.model(
             required: true,
             unique: true
         },
-        password: {
+        paasword: {
             type: String,
             required: true
         }
@@ -24,7 +25,7 @@ const user = mongoose.model(
                 ret.userId = ret._id.toString();
                 delete ret._id;
                 delete ret._v;
-                delete ret.password;
+                delete ret.paasword;
             }
         }
 

@@ -4,11 +4,11 @@ const auth = require("../middleware/auth");
 const { response } = require("express");
 const { model } = require("mongoose");
 
-async function login({email, password},callback){
+async function login({email, paasword},callback){
     const userModel = await user.findOne({email});
 
     if(userModel != null){
-        if(bcrypt.compareSync(password, userModel.password)){
+        if(bcrypt.compareSync(paasword, userModel.paasword)){
             const token = auth.generateAccessToken(userModel.toJSON());
             return callback(null, {...userModel.toJSON(), token});
         }else{
@@ -39,7 +39,7 @@ async function register(params, callback){
     }
 
     const salt = bcrypt.genSaltSync(10);
-    params.password = bcrypt.hashSync(params.password, salt);
+    params.paasword = bcrypt.hashSync(params.paasword, salt);
 
     const userSchema = new user(params);
     userSchema.save()

@@ -29,6 +29,38 @@
     "consumes": ["application/json"],
     "produces": ["application/json"],
     "paths": {
+      "/api/register": {
+        "post": {
+          "tags": ["Users"],
+          "summary": "Register API",
+          "parameters":[
+            {
+              "name": "RegisterModel",
+              "in": "body",
+              "description": "User Registration",
+              "required": true,
+              "type": "object",
+              "schema": {
+                "$ref":"#/definitions/RegisterModel"
+              }
+            }
+          ],
+          "responses":{
+            "200":{
+              "description": "OK",
+              "schema" : {
+                "$ref":"#/definitions/ServiceResponse"
+
+              }
+            }
+          }
+
+        }
+      },
+
+
+
+
       "/api/login": {
         "post": {
           "tags": ["Users"],
@@ -61,34 +93,7 @@
 
 
 
-      "/api/register": {
-        "post": {
-          "tags": ["Users"],
-          "summary": "Register API",
-          "parameters":[
-            {
-              "name": "RegisterModel",
-              "in": "body",
-              "description": "User Registration",
-              "required": true,
-              "type": "object",
-              "schema": {
-                "$ref":"#/definitions/RegisterModel"
-              }
-            }
-          ],
-          "responses":{
-            "200":{
-              "description": "OK",
-              "schema" : {
-                "$ref":"#/definitions/ServiceResponse"
-
-              }
-            }
-          }
-
-        }
-      },
+      
 
 
 
@@ -278,16 +283,16 @@
         "required": [
           "fullName",
           "email",
-          "password"
+          "paasword"
         ],
         "properties": {
-          "fullname": {
+          "fullName": {
             "type": "string"
           },
           "email": {
             "type": "string"
           },
-          "password": {
+          "paasword": {
             "type":"string"
           }
         }
@@ -296,13 +301,13 @@
       "LoginModel":{
         "required": [
           "email",
-          "password"
+          "paasword"
         ],
         "properties": {
           "email": {
             "type": "string"
           },
-          "password": {
+          "paasword": {
             "type":"string"
           }
         }

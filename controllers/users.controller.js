@@ -17,7 +17,7 @@ exports.register = (req, res, next) => {
 exports.login = (req, res, next) => {
     const {email, paasword} = req.body;
 
-    userServices.login({email, password}, (error, results) => {
+    userServices.login({email, paasword}, (error, results) => {
         if(error){
             return next(error);
         }
